@@ -6,5 +6,6 @@
 - [x]    Setup Database using PostgreSQL 
 - [x]    Attach Database to UI
 - [x]    Add Auth with Clerk
-- []    Add Image Uplaod
-- []    Error Management (w/ Sentry)
+- []     Add Image Uplaod
+- []     taint (Server Only)
+- []     Error Management (w/ Sentry)
