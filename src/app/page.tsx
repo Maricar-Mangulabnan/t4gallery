@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import Link from "next/link";
 import { db } from "~/server/db";
 
@@ -14,6 +15,7 @@ const mockIMAGES = mockUrls.map((url, index) => ({
 }));
 
 export default async function HomePage() {
+  headers();
 
     const posts = await db.query.posts.findMany()
 
