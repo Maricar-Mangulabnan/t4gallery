@@ -1,14 +1,13 @@
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from "react";
 import { db } from "~/server/db";
+import { getMyImages } from "~/server/db/queries";
 
 export default async function Images (){
-    const user = await auth();
-    if(!user.userId) throw new Error("Unauthorized");
-    const images = await db.query.images.findMany({
-      where: (model) => eq(model.userId, user.userId),
-        orderBy: (model, { desc }) => desc(model.id),
-      });
+    
+  const images = await getMyImages();
+  
     return(
         <div className="flex flex-wrap gap-4">
         {images.map((image) => (

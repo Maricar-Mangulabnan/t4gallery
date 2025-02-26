@@ -11,12 +11,12 @@ export function TopNav() {
     <nav className="flex w-full items-center justify-between border-b p-4 text-xl font-semibold">
       <div>Gallery</div>
 
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-between items-center gap-5">
         <SignedOut>
           <SignInButton />
         </SignedOut>
         <SignedIn>
-          <UploadButton
+          <UploadButton className="text-sm"
             endpoint="imageUploader"
             onClientUploadComplete={() => {
               router.refresh(); 
