@@ -1,21 +1,21 @@
-import { auth } from "@clerk/nextjs/server";
-import { eq } from "drizzle-orm";
-import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from "react";
-import { db } from "~/server/db";
+import Image from "next/image";
 import { getMyImages } from "~/server/db/queries";
 
-export default async function Images (){
-    
+export default async function Images() {
+
   const images = await getMyImages();
-  
-    return(
-        <div className="flex flex-wrap gap-4">
-        {images.map((image) => (
-          <div key= {image.id} className="w-48">
-            <img src={image.url}/>
-            <p className="text-center">{image.name}</p>
-              </div>
-        ))}
-      </div>
-    )
+
+  return (
+    <div className="flex flex-wrap justify-center gap-4 mt-5">
+      {images.map((image) => (
+        <div key={image.id} className="flex w-48 flex-col ">
+          <Image className="rounded-md shadow-md shadow-gray-700 transition-transform duration-300 ease-in-out hover:scale-105"
+            src={image.url} objectFit="fill" alt={image.name} width={300} height={300} />
+          <p className="text-center text-gray-400 capitalize">{image.name}</p>
+        </div>
+      ))}
+    </div>
+  )
+
+
 }
